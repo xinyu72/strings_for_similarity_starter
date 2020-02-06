@@ -12,8 +12,9 @@ def main(sts_data):
 
 
     print(f"Found {len(texts)} STS pairs")
-
+    
     for i,pair in enumerate(texts[120:140]):
+        label = labels[i+120]
         t1, t2 = pair
         print(f"Sentences: {t1}\t{t2}")
 
@@ -21,7 +22,7 @@ def main(sts_data):
         # catch any exceptions and assign 0.0
 
         nist_score = 0.0
-        print(f"Label: {labels[i]}, NIST: {nist_score:0.02f}\n")
+        print(f"Label: {label}, NIST: {nist_score:0.02f}\n")
 
 
 if __name__ == "__main__":
