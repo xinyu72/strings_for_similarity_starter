@@ -12,17 +12,38 @@ def main(sts_data):
 
 
     print(f"Found {len(texts)} STS pairs")
-    
-    for i,pair in enumerate(texts[120:140]):
-        label = labels[i+120]
+
+    start_index = 120
+    for i,pair in enumerate(texts[start_index:start_index+20]):
+
+        this_label = labels[i + start_index]
+
         t1, t2 = pair
         print(f"Sentences: {t1}\t{t2}")
 
-        # TODO: Calculate for each pair of sentences
-        # catch any exceptions and assign 0.0
+        # input tokenized text
+        t1_toks = word_tokenize(t1.lower())
+        t2_toks = word_tokenize(t2.lower())
 
-        nist_score = 0.0
-        print(f"Label: {label}, NIST: {nist_score:0.02f}\n")
+        # try / except for each side because of ZeroDivision Error
+        # 0.0 is lowest score - give that if ZeroDivision Error
+        try:
+            nist_1 = sentence_nist([t1_toks,], t2_toks)
+        except ZeroDivisionError:
+            #print(f"\n\n\nno NIST, {i}")
+            nist_1 = 0.0
+
+
+        try:
+            nist_2 = sentence_nist([t2_toks, ], t1_toks)
+        except ZeroDivisionError:
+            #print(f"\n\n\nno NIST, {i}")
+            nist_2 = 0.0
+
+        # sum to produce one metric
+        nist_total = nist_1 + nist_2
+        #print(nist_1, nist_2)
+        print(f"Label: {this_label}, NIST: {nist_total:0.02f}\n")
 
 
 if __name__ == "__main__":
