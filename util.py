@@ -16,3 +16,5 @@ def parse_sts(data_file):
             t2 = fields[6].lower()
             texts.append((t1, t2))
     return texts, labels
+
+

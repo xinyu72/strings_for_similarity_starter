@@ -1,6 +1,10 @@
 from scipy.stats import pearsonr
 import argparse
 from util import parse_sts
+from lab import nist_cal, bleu_cal, lcs_cal, ld_cal, wer_cal
+
+def maxminNormalization(x,Max,Min):
+    return (x - Min) / (Max - Min)
 
 
 def main(sts_data):
@@ -17,6 +21,23 @@ def main(sts_data):
     scores = {score_type: [] for score_type in score_types}
 
     # TODO: Calculate the metrics here to fill the lists in scores
+    
+    scores['NIST'] = nist_cal(sts_data)
+    scores['NIST'] = [maxminNormalization(i,5,0) for i in scores['NIST']]
+    
+    #use sentence_bleu function in nltk package to calculate BLEU score
+    scores['BLEU'] = bleu_cal(sts_data)
+    scores['BLEU'] = [maxminNormalization(i,5,0) for i in scores['BLEU']]
+    
+    
+    scores['Word Error Rate'] = wer_cal(sts_data)
+    scores['Word Error Rate'] = [maxminNormalization(i,5,0) for i in scores['Word Error Rate']]
+    
+    scores['Longest common substring'] = lcs_cal(sts_data)
+    scores['Longest common substring'] = [maxminNormalization(i,5,0) for i in scores['Longest common substring']]
+    
+    scores['Levenshtein distance'] = ld_cal(sts_data)
+    scores['Levenshtein distance'] = [maxminNormalization(i,5,0) for i in scores['Levenshtein distance']]
 
 
     # This can stay as-is to print similar output to the sample
