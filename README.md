@@ -39,7 +39,7 @@ https://devguide.python.org/documenting/#affirmative-tone) )
 ### Introduction of metrics 
 * NIST a metric which is used to evaluate the effctiveness of machine translation, thus, this metric can also be used to evaluate the similarity between two sentences.
 * BLEU is another metric which is also used to evaluate the effctiveness of machine translation
-* Word error rate is a automatic speech recognition metric. It computes the minimum-edit distance between the ground-truth sentence and the hypothesis sentence of a speech-to-text API, the formula is defined as : \(WER = \frac{\text{#insertions} + \text{#deletions} + \text{#substitutions}}{\text{Words in the reference}}\)
+* Word error rate is a automatic speech recognition metric. It computes the minimum-edit distance between the ground-truth sentence and the hypothesis sentence of a speech-to-text API
 * Longet common substring is literally used to find out the longest common substring between two sentences.
 * Levenshtein distance is the number of operations to transfer sentence A to sentence B, if two sentences have short Levenshtein distance, that means they are similar to each other.
 
