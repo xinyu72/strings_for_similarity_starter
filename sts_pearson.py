@@ -1,7 +1,7 @@
 from scipy.stats import pearsonr
 import argparse
 from util import parse_sts
-from lab import nist_cal, bleu_cal, lcs_cal, ld_cal, wer_cal
+from lab import nist_cal, bleu_cal, lcs, lcs_cal, ld_cal, editDistance, wer,wer_cal
 
 def maxminNormalization(x,Max,Min):
     return (x - Min) / (Max - Min)
