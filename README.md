@@ -47,7 +47,7 @@ https://devguide.python.org/documenting/#affirmative-tone) )
 `sts_pearson.py` uses `sts-dev.csv` as example to calculate different similarity metrics for each pair, and then calculate the pearson correlation rate between true label and each similarity matrics.
 
 Example usage:
-`python sts_pearson.py --sts_data stsbenchmark/sts-dev.csv`
+`python sts_pearson.py stsbenchmark/sts-dev.csv`
 
 ### output
 NIST correlation: 0.593
