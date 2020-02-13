@@ -52,6 +52,6 @@ Example usage:
 ### output
 NIST correlation: 0.593
 BLEU correlation: 0.433
-Word Error Rate correlation: -0.459
+Word Error Rate correlation: -0.452
 Longest common substring correlation: 0.468
 Levenshtein distance correlation: -0.175
